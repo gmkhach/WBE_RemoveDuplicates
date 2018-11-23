@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*
+ * Write a method that takes a sentence and removes all duplicate characters except spaces.
+ * Example: "Hello there, how are you?" will be returned as "Helo ther, w a yu?"
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,14 +36,16 @@ namespace RemoveDuplicates
         static string RemoveDuplicates(string input)
         {
             Queue<char> myQ = new Queue<char>();
-            foreach(char ch in input)
+            StringBuilder mySb = new StringBuilder();
+            // collecting the unique characters
+            foreach (char ch in input)
             {
                 if (ch == ' ' || !myQ.Contains(ch))
                 {
                     myQ.Enqueue(ch);
                 }
             }
-            StringBuilder mySb = new StringBuilder();
+            // building the duplicate-free sentence
             foreach (char ch in myQ)
             {
                 mySb.Append(ch);
